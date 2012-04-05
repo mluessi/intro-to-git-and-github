@@ -45,13 +45,13 @@ What is git?
 ------------
 
 - git is a **free** and **open source, distributed** version control system
-- Originally created by Linus Torvalds in 2005
+- Originally created by Linus Torvalds in 2005 (Creator of Linux Kernel)
 - It is designed to be fast
 
 Unique features:
 
 - Every **git clone** is a full **repository** with complete history etc.
-- It does not have to rely on a centralized server
+- It does not have to rely on a centralized server (not like CVS or SVN)
 - **Branching** and **merging** are easy to do and fast
 
 ----
