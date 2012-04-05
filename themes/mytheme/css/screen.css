@@ -56,7 +56,7 @@ div.slides.nocontext {
 }
 
 div.slide {
-  background: url('background.png') bottom center no-repeat;
+  background: url('fork_me.png') top right no-repeat;
   display: none;
   position: absolute;
   overflow: hidden;
