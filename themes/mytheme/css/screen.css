@@ -4,7 +4,7 @@ h1, h2, h3, h4, h5, h6, p, ul, li {
 
 p, ul, li {
     color: #555753 !important;
-    font-size: 120% !important;
+    font-size: 100% !important;
 }
 
 header h1, header h2, header h3, header h4, header h5, header h6 {
@@ -19,7 +19,8 @@ section h1, section h2, section h3, section h4, section h5, section h6 {
 img { display: block; margin: auto; }
 
 body {
-  font: 15px "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  font: 24px "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  line-height: 75%;
   background: #555753;
   padding: 0;
   margin: 0;
@@ -548,18 +549,35 @@ div.slide div.presenter_notes {
 
 
 .mytitle {
-    font-size: 400%;
+    font-size: 200%;
+    line-height: 100%;
 }
 
 .authors {
+    font-size: 150%;
+}
+
+
+.large {
     font-size: 200%;
 }
 
 
-.titletext {
-    position: relative;
-    top: 200px;
+.smalltxt {
+    font-size: 80%;
 }
+
+.centerslide {
+    font-size: 200%;
+    height: 200px;
+}
+
+
+
+
+
+
+
 
 
 

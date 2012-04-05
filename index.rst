@@ -1,19 +1,13 @@
 .. raw:: html
 
-   <div>
-   <div class="titleimg">
-   <img width="650" style="float: left; padding: 20px;" src="images/git.gif"/>
-   <img width="300" style="padding: 20px;" src="images/github_logo.png"/>
-   </div>
+   <span class="mytitle"> Intro to </span>
+   <img width="750" style="padding: 10px;" src="images/git.gif"/>
+   <span class="mytitle">and</span>
+   <img width="300" style="padding: 10px;" src="images/github_logo.png"/>
 
-   <div class="titletext">
-   <span class="mytitle">Intro to git and github</span>
-   <br>
    <span class="authors">
     Martin Luessi
    </span>
-   </div>
-   </div>
 
 Martinos Center Why N How, April 5, 2012
 
@@ -21,7 +15,7 @@ Martinos Center Why N How, April 5, 2012
 
 ..imagine the following scenario:
 
-- You write some code (or a paper etc.)
+- You write some code (or a analysis script, LatTex code, etc.)
 - You want to share it with others and collaborate on it
 
 How do you do it?
@@ -351,7 +345,7 @@ Getting Started with github
 
 -----
 
-Gettting Started with github Cont.
+Getting Started with github Cont.
 ----------------------------------
 
 - Clone the repository
@@ -392,7 +386,16 @@ Workflow for Adding a Feature
    [$] git branch alg_optimization
    [$] git checkout alg_optimization
 
+
+.. raw:: html
+
+   <span class="smalltxt">
+
 Tip: You can do the same using ``git checkout -b alg_optimization``
+
+.. raw:: html
+
+    </span>
 
 - Make your changes, commit them to the branch
 - So far, all your changes are local, github does not know about them
@@ -453,7 +456,16 @@ Find out More
 - Trick: `show current branch in BASH prompt <https://github.com/kura/git-current-branch-bashrc>`_
 
 
+----
 
+Finally..
+---------
+
+.. raw:: html
+
+   <div class="centerslide">
+   Questions?
+   </div>
 
 
 
