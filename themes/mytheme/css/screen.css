@@ -394,8 +394,8 @@ body.expose .slide.current {
 .gr { color: #FF0000 } /* Generic.Error */
 .gh { color: #000080; font-weight: bold } /* Generic.Heading */
 .gi { color: #00A000 } /* Generic.Inserted */
-.go { color: #808080 } /* Generic.Output */
-.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.go { color: #000000; } /* Generic.Output */
+.gp { color: #000000; } /* Generic.Prompt */
 .gs { font-weight: bold } /* Generic.Strong */
 .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
 .gt { color: #0040D0 } /* Generic.Traceback */
@@ -428,7 +428,7 @@ body.expose .slide.current {
 .sb { color: #BA2121 } /* Literal.String.Backtick */
 .sc { color: #BA2121 } /* Literal.String.Char */
 .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
-.s2 { color: #BA2121 } /* Literal.String.Double */
+.s2 { color: #000000 } /* Literal.String.Double */
 .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
 .sh { color: #BA2121 } /* Literal.String.Heredoc */
 .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */

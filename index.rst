@@ -15,7 +15,7 @@ Martinos Center Why N How, April 5, 2012
 
 ..imagine the following scenario:
 
-- You write some code (or a analysis script, LatTex code, etc.)
+- You write a data analysis script
 - You want to share it with others and collaborate on it
 
 How do you do it?
@@ -27,6 +27,7 @@ Potential problems:
 
 - It is difficult to track changes (someone needs to coordinate)
 - What if two collaborators make incompatible changes?
+- What if you later find that an earlier version was better?
 
 ----
 
@@ -39,20 +40,35 @@ Enter Version Control Systems..
 - Provide a structured way of integrating changes (branching and merging)
 - Work with any type of text file (not binary files like .doc etc.)
 
+Potential uses for scientists:
+
+- Software development
+- Data analysis scripts (Python, BASH, Matlab, ...)
+- Papers (if they are plain text files, e.g., LaTex)
+- Presentations (like this one)
+
 ----
 
 What is git?
 ------------
 
 - git is a **free** and **open source, distributed** version control system
-- Originally created by Linus Torvalds in 2005 (Creator of Linux Kernel)
+- Originally created by Linus Torvalds in 2005 (Creator of the Linux Kernel)
 - It is designed to be fast
 
 Unique features:
 
-- Every **git clone** is a full **repository** with complete history etc.
-- It does not have to rely on a centralized server (not like CVS or SVN)
+- Every **git clone** is a **full repository** with complete history etc.
+- It does not have to rely on a centralized server (unlike CVS or SVN)
 - **Branching** and **merging** are easy to do and fast
+
+A **repository** contains:
+
+- Files and directories
+- A historical record of changes
+- A set of commit objects
+- A set of heads (references to commit objects)
+
 
 ----
 
@@ -62,7 +78,7 @@ Getting a git Repository
 
 Either **create** a new repository:
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
     [$] cd ~/mycode
     [$] git init
@@ -70,7 +86,7 @@ Either **create** a new repository:
 
 Or **clone** a repository:
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] git clone git://github.com/schacon/simplegit.git
    Initialized empty Git repository in /home/martin/simplegit/.git/
@@ -89,14 +105,16 @@ Or **clone** a repository:
    drwxr-xr-x 2 martin martin 4096 Apr  4 14:41 lib
 
 
+Notice: The ``.git`` directory contains the git repository
+
 ----
 
 First Steps: Adding a File
 --------------------------
 
-see the **status**
+See the **status**
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] cd ~/mycode
    [$] git status
@@ -109,9 +127,9 @@ see the **status**
 - We are on the **master branch**
 - The repository is empty
 
-let's **add** a file
+Let's **add** a file
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] echo "hello git" >> test.txt
    [$] git add test.txt
@@ -121,9 +139,9 @@ let's **add** a file
 First Steps: Adding a File Cont.
 --------------------------------
 
-see the **status** again
+See the **status** again
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] git status
    # On branch master
@@ -138,7 +156,7 @@ see the **status** again
 
 **commit** all changes
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] git commit -a -m "my first file"
    [master (root-commit) cb2ff46] my first file
@@ -146,9 +164,9 @@ see the **status** again
     1 files changed, 1 insertions(+), 0 deletions(-)
     create mode 100644 test.tx
 
-see the **log**
+See the **log**
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] git log
    commit cb2ff4663bdc3bf3d38a0ad534dd770656c45f0d
@@ -163,13 +181,13 @@ Making More Changes
 
 Make modifications to the file
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] echo "new content" >> test.txt
 
 See the **difference**
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] git diff
    diff --git a/test.txt b/test.txt
@@ -182,7 +200,7 @@ See the **difference**
 
 And again **commit** the changes
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] git commit -a -m "more changes"
    [master cb7fe4f] more changes
@@ -194,7 +212,8 @@ And again **commit** the changes
 Summary so far
 --------------
 
-- Use **git init** and **git clone** to create or clone a git repository, resp.
+- Use **git init** to create a new repository 
+- Use **git clone** to clone an existing repository
 - Use **git status** to see the status
 - Use **git add** to add a file/directory to version control
 - Use **git diff** to see the changes you made
@@ -211,36 +230,61 @@ Branching.. let the fun begin
 
 Let's see what branches are available
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] git branch
    * master
 
 so far we only have the **master branch**
 
+Including our previous two commits (A and B) our repo looks like this:
+
+.. sourcecode:: console
+
+
+   (A) --- (B)
+            |
+          master
+            |
+          HEAD
+
+----
+
+Branching Cont.
+---------------
+
 Create a new branch
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] git branch my_branch
 
 
 Switch to the new branch
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] git checkout my_branch
 
-Change the file again and commit the changes
+Change the file again and commit the changes (commit C)
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] echo "even more content" >> test.txt
-   [$] git commit -a -m "changes in branch"
-   [my_branch 6354500] changes in branch
-   Committer: martin <martin@think.(none)>
-   1 files changed, 1 insertions(+), 0 deletions(-)
+   [$] git commit -a -m "more content"
 
+
+Now our repository looks like this
+
+.. sourcecode:: console
+
+
+   (A) --- (B) ---- (C)
+            |        |
+          master  my_branch
+                     |
+                    HEAD
+ 
 
 ----
 
@@ -249,14 +293,14 @@ Branching Cont.
 
 Let's switch back to the **master branch**
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] git checkout master
 
 
 and look at the file
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] cat test.txt
    hello git
@@ -273,36 +317,44 @@ Merging Branches
 
 Finally, we can **merge** the changes into the master branch
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] git checkout master
-   [$] git branch
-   * master
-     my_branch
    [$] git merge my_branch
    Updating cb7fe4f..6354500
    Fast-forward
     test.txt |    1 +
      1 files changed, 1 insertions(+), 0 deletions(-)
 
-Now, the master branch has the changes we made in ``my_branch``
+Now, the master branch includes the changes we made in ``my_branch``
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] cat test.txt
    hello git
    new content
    even more content
 
+Our repository looks like this
+
+.. sourcecode:: console
+
+
+   (A) --- (B) ---- (C) -------(D)
+                     |          |
+                 my_branch   master
+                                |
+                              HEAD
+ 
 ----
 
 ..this is all very nice, but
 ----------------------------
 
-- How do you share a git repo amongst multiple people?
+- How do you share a git repo with multiple people?
 - You could put it on an shared drive / dropbox etc.
 
-still:
+Still:
 
 - Managing permissions can be difficult
 - It is difficult to keep track of who changes what
@@ -313,14 +365,22 @@ still:
 github to the Rescue
 --------------------
 
-- github is a company that specialized in git hosting
-- It combines git with social networking
+- github is a company that specializes in **git hosting**
+- It **combines git** with **social networking**
 - Free for open source projects
 - 1.3 million users, 2 million git repos (as of 2/2012)
 
 
 .. image:: images/github_logo.png
    :scale: 50%
+
+----
+
+github User Interface
+---------------------
+
+.. image:: images/github_ui.png
+   :scale: 90%
 
 
 -----
@@ -350,13 +410,13 @@ Getting Started with github Cont.
 
 - Clone the repository
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
   [$] git clone git@github.com:mluessi/gitexample.git
 
 - Set your name and e-mail address
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] cd gitexample
    [$] git config user.name "Firstname Lastname"
@@ -369,7 +429,7 @@ Getting Started with github Cont.
 
 - To keep your local repo up to date, **pull** changes from github
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] git pull
 
@@ -381,7 +441,7 @@ Workflow for Adding a Feature
 - Fork the repo on github and clone it to your machine (prev. slides)
 - Create a new branch and check it out
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] git branch alg_optimization
    [$] git checkout alg_optimization
@@ -401,7 +461,7 @@ Tip: You can do the same using ``git checkout -b alg_optimization``
 - So far, all your changes are local, github does not know about them
 - You need to **push** the branch to github
 
-.. sourcecode:: bash
+.. sourcecode:: console
 
    [$] git push origin alg_optimization
 
@@ -426,48 +486,58 @@ PR: Get Your Changes Included
 This will:
 
 - Send an e-mail notification to all authors
-- The PR can be discussed on github
-- You can keep pushing changes to your branch until everyone is happy
+
+----
+
+PR: Cont.
+---------
+
+- The PR can be discussed
+
+.. image:: images/github_pr_discussion.png
+   :scale: 90%
+
+----
+
+PR: Cont.
+---------
+
+- You can discuss changes in individual lines
+
+.. image:: images/github_pr_discussion2.png
+   :scale: 90%
+
+- You can **keep pushing changes to your branch** until everyone is happy
 - Finally, the owners of the original repo can merge your changes
 
 .. image:: images/merge_pr.png
    :scale: 100%
-
 
 ----
 
 Live Demo
 ---------
 
-
-bla
-
-
+..
 
 ----
 
 
-Find out More
+Finally...
 -------------
 
+**To learn more**
+
 - On git `<http://git-scm.com/documentation>`_
-- About github the company `WIRED: Lord of the Files: How GitHub Tamed Free Software <http://www.wired.com/wiredenterprise/2012/02/github/all/1>`_
-- Details on `how to contribute to a project <http://martinos.org/mne/gitwash/git_development.html>`_
-- Trick: `show current branch in BASH prompt <https://github.com/kura/git-current-branch-bashrc>`_
+- A good tutorial `<http://www.eecs.harvard.edu/~cduan/technical/git>`__
+- `WIRED: Lord of the Files: How GitHub Tamed Free Software <http://www.wired.com/wiredenterprise/2012/02/github/all/1>`_
+- Details on `how to contribute to a project on github <http://martinos.org/mne/gitwash/git_development.html>`_
+- Trick: `show the current branch in your BASH prompt <https://github.com/kura/git-current-branch-consolerc>`_
 
 
-----
+**If you did not like this talk, fork it, improve it, and create a PR**
 
-Finally..
----------
-
-.. raw:: html
-
-   <div class="centerslide">
-   Questions?
-   </div>
-
-
+`<https://github.com/mluessi/intro-to-git-and-github>`_
 
 
 
