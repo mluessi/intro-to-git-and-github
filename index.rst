@@ -376,12 +376,22 @@ github to the Rescue
 
 ----
 
-github User Interface
----------------------
+github User Interface: Repository
+---------------------------------
 
 .. image:: images/github_ui.png
-   :scale: 90%
+   :scale: 88%
 
+----
+
+github User Interface: News Feed
+--------------------------------
+
+.. image:: images/github_feed.png
+   :scale: 100%
+
+- You can follow coders and projects
+- The news feed shows you what is going on
 
 -----
 
