@@ -5,8 +5,9 @@
    <span class="mytitle">and</span>
    <img width="300" style="padding: 10px;" src="images/github_logo.png"/>
 
+   <br>
    <span class="authors">
-    Martin Luessi
+    Martin Luessi (mluessi <em>at</em> nmr.mgh.harvard.edu)
    </span>
 
 Martinos Center Why N How, April 5, 2012
